@@ -1,3 +1,18 @@
 <p>
   home works!
 </p>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Role</th>
+    <th>Dob</th>
+  </tr>
+  <tr *ngFor="let user of getUsers();">
+      <td>{{user.getFirstName()}} {{user.getLastName()}}</td>
+      <td>{{user.getGender()}}</td>
+      <td>{{user.getRole()}}</td>
+      <td>{{user.getDob()}}</td>
+  </tr>
+</table>

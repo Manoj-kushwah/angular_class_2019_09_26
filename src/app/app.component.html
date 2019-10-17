@@ -41,4 +41,19 @@
   <li *ngFor="let item of listOfItem; let i=index;"> {{i+1}} - {{item}}</li>
 </ul>
  -->
-<router-outlet></router-outlet>
+ <nav class="nav-top">
+   <div class="logo">
+    Brand
+   </div>
+  <ul>
+    <li>
+      <a [routerLink]="['/']">Home</a>
+    </li>
+    <li>
+      <a [routerLink]="['/contact']">Contact</a>
+    </li>
+  </ul>
+ </nav>
+ <div style="float: left; width: 100%;">
+    <router-outlet></router-outlet>
+ </div>
