@@ -4,15 +4,18 @@
 
 <table>
   <tr>
+    <td colspan="10"><input type="text" (keyup)="filterName($event)" /></td>
+  </tr>
+  <tr>
     <th>Name</th>
     <th>Gender</th>
     <th>Role</th>
     <th>Dob</th>
   </tr>
-  <tr *ngFor="let user of getUsers();">
-      <td>{{user.getFirstName()}} {{user.getLastName()}}</td>
+  <tr *ngFor="let user of getUsers() | listFilter: '5'">
+      <td>{{user.getFirstName()+' '+user.getLastName() | uppercase}}</td>
       <td>{{user.getGender()}}</td>
-      <td>{{user.getRole()}}</td>
-      <td>{{user.getDob()}}</td>
+      <td>{{user.getRole() | titlecase}}</td>
+      <td>{{user.getDob() | date: 'dd/MM/yyyy, hh:mm:ss a'}}</td>
   </tr>
 </table>

@@ -9,6 +9,7 @@ import { User } from '../shared/user';
 })
 export class HomeComponent implements OnInit {
   private users: User[];
+  public listFilter:string = '';
   constructor(private dataMap: DataMapService) { 
     console.log("HomeComponent: ", dataMap);
     console.log("HomeComponent: getUserList: ", dataMap.getUserList());
@@ -20,5 +21,11 @@ export class HomeComponent implements OnInit {
 
   public getUsers(): User[]{
     return this.users;
+  }
+
+  public filterName(event: any): void{
+    console.log("HomeComponent: filterName: event: ", event);
+    this.listFilter = (event && event.target.value);
+    console.log("HomeComponent: filterName: listFilter: ", this.listFilter);
   }
 }
