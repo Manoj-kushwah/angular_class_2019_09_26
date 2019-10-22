@@ -9,7 +9,7 @@ import { User } from '../shared/user';
 })
 export class HomeComponent implements OnInit {
   private users: User[];
-  public listFilter:string = '';
+  public listFilterKey:string = '';
   constructor(private dataMap: DataMapService) { 
     console.log("HomeComponent: ", dataMap);
     console.log("HomeComponent: getUserList: ", dataMap.getUserList());
@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   public filterName(event: any): void{
     console.log("HomeComponent: filterName: event: ", event);
-    this.listFilter = (event && event.target.value);
-    console.log("HomeComponent: filterName: listFilter: ", this.listFilter);
+    this.listFilterKey = (event && event.target.value);
+    console.log("HomeComponent: filterName: listFilterKey: ", this.listFilterKey);
   }
 }

@@ -15,6 +15,13 @@ export class DataMapService {
       user.setGender("male");
       user.setDob(""+new Date);
       this.userList.push(user);
+      user = new User;
+      user.setFirstName("User");
+      user.setLastName(""+i);
+      user.setRole("user");
+      user.setGender("male");
+      user.setDob(""+new Date);
+      this.userList.push(user);
     }
   }
 

@@ -12,7 +12,7 @@
     <th>Role</th>
     <th>Dob</th>
   </tr>
-  <tr *ngFor="let user of getUsers() | listFilter: '5'">
+  <tr *ngFor="let user of getUsers() | listFilter: [listFilterKey, 6];">
       <td>{{user.getFirstName()+' '+user.getLastName() | uppercase}}</td>
       <td>{{user.getGender()}}</td>
       <td>{{user.getRole() | titlecase}}</td>
