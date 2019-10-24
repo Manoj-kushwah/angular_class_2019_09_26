@@ -28,4 +28,8 @@ export class HomeComponent implements OnInit {
     this.listFilterKey = (event && event.target.value);
     console.log("HomeComponent: filterName: listFilterKey: ", this.listFilterKey);
   }
+
+  public openUserDetails(event){
+    console.log("HomeComponent: openUserDetails: event: ", event);
+  }
 }

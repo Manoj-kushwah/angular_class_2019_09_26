@@ -1,7 +1,11 @@
 <p>
   home works!
 </p>
-
+<div>
+  <div *ngFor="let user of getUsers() | listFilter: [listFilterKey, 6];">
+    <div appUserListItem [data]="user" (openDetails)="openUserDetails($event)">{{user | json}}</div>
+  </div>
+</div>
 <table>
   <tr>
     <td colspan="10"><input type="text" (keyup)="filterName($event)" /></td>
