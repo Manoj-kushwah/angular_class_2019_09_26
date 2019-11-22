@@ -23,14 +23,6 @@ export class LoginComponent implements OnInit {
     console.log(this.email, this.password);
     this.api.login(this.email,this.password).then((res)=>{
       console.log(res);
-      if (res.data != null) {
-        this.auth.setUser(res.data);
-        this.route.navigate(['admin']).then(res => {
-
-        }).catch(err => {
-
-        });
-      }
       return res;
     }).catch(err =>{
       console.log(err);

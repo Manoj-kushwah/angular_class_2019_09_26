@@ -9,7 +9,8 @@ import { ApiService } from '../api/api.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  private userList:any[] = [];
+  public userList:any[] = [];
+  public query: string;
   constructor(private auth: AuthService, private route: Router, private api: ApiService) { }
 
   ngOnInit() {
@@ -27,4 +28,10 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  /**
+   * addUser
+   */
+  public addUser(user: any) {
+    // this.api.addUser()
+  }
 }
