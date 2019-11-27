@@ -41,46 +41,52 @@
 <div class="modal" tabindex="-1" role="dialog" id="addUserModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="register-form">
-          <div class="form">
-            <div class="note">
-              <p>This is a simpleRegister Form made using Boostrap.</p>
-            </div>
-        
-            <div class="form-content">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Your Name *" value="" />
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Phone Number *" value="" />
-                  </div>
+      <div class="register-form">
+        <!-- form start -->
+        <form class="form m-0" (ngSubmit)="submitUser($event)">
+          <div class="note">
+            <p>Create new user</p>
+          </div>
+          <div class="form-content m-0">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" class="form-control" [(ngModel)]="newUser.firstName" name="firstName" placeholder="First Name *" />
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Your Password *" value="" />
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Confirm Password *" value="" />
-                  </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" [(ngModel)]="newUser.lastName" name="lastName" placeholder="Last Name *" />
                 </div>
               </div>
-              <button type="button" class="btnSubmit">Submit</button>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="email" class="form-control" [(ngModel)]="newUser.email" name="email" placeholder="Email *" />
+                </div>
+                <div class="form-group">
+                  <input type="role" list="role_list" class="form-control" [(ngModel)]="newUser.role" name="role" placeholder="Role *" />
+                  <datalist id="role_list">
+                    <option value="1">Admin</option>
+                    <option value="2">User</option>
+                  </datalist>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <hr>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="password" class="form-control" [(ngModel)]="newUser.password" name="password" placeholder="Password *" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="password" class="form-control" [(ngModel)]="rePassword" name="rePassword" placeholder="Re Password" />
+                </div>
+              </div>
             </div>
+            <button type="submit" class="btnSubmit">Submit</button>
           </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        </form>
+        <!-- form end -->
       </div>
     </div>
   </div>

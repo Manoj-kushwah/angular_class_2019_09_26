@@ -11,6 +11,8 @@ import { ApiService } from '../api/api.service';
 export class AdminComponent implements OnInit {
   public userList:any[] = [];
   public query: string;
+  public newUser: any = { password: null, email: null};
+  public rePassword: string;
   constructor(private auth: AuthService, private route: Router, private api: ApiService) { }
 
   ngOnInit() {
@@ -33,5 +35,26 @@ export class AdminComponent implements OnInit {
    */
   public addUser(user: any) {
     // this.api.addUser()
+  }
+
+  /**
+   * submitUser
+   */
+  public submitUser(event: any): any {
+    console.log(event);
+    console.log(this.newUser);
+    let emailRegx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!(this.newUser.email && emailRegx.test(this.newUser.email)) ) {
+      console.log('Error: ', 'Invalid email.');
+    } else if ( !(this.rePassword && this.rePassword.match(this.newUser.password)) ) {
+      console.log('Error: ', 'Did not match passowrd or re password.');
+    } else {
+      this.api.addUser(this.newUser).then((res) => {
+        console.log('Created:', res);
+      }).catch((err) => {
+        console.log('Error: ', err);
+      })
+    }
+    return false;
   }
 }
