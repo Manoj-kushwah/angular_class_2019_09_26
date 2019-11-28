@@ -29,7 +29,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of userList | userListFilter: query; let i=index;">
+    <tr *ngFor="let user of userList; let i=index;">
       <th scope="row">{{i}}</th>
       <td>{{user.firstName}}</td>
       <td>{{user.lastName}}</td>
@@ -51,18 +51,18 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <input type="text" class="form-control" [(ngModel)]="newUser.firstName" name="firstName" placeholder="First Name *" />
+                  <input type="text" class="form-control" [(ngModel)]="newUser.firstName1" name="firstName" placeholder="First Name *" />
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" [(ngModel)]="newUser.lastName" name="lastName" placeholder="Last Name *" />
+                  <input type="text" class="form-control" [(ngModel)]="newUser.lastName1" name="lastName" placeholder="Last Name *" />
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <input type="email" class="form-control" [(ngModel)]="newUser.email" name="email" placeholder="Email *" />
+                  <input type="email" class="form-control" [(ngModel)]="newUser.email1" name="email" placeholder="Email *" />
                 </div>
                 <div class="form-group">
-                  <input type="role" list="role_list" class="form-control" [(ngModel)]="newUser.role" name="role" placeholder="Role *" />
+                  <input type="role" list="role_list" class="form-control" [(ngModel)]="newUser.role1" name="role" placeholder="Role *" />
                   <datalist id="role_list">
                     <option value="1">Admin</option>
                     <option value="2">User</option>
@@ -74,7 +74,7 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <input type="password" class="form-control" [(ngModel)]="newUser.password" name="password" placeholder="Password *" />
+                  <input type="password" class="form-control" [(ngModel)]="newUser.password1" name="password" placeholder="Password *" />
                 </div>
               </div>
               <div class="col-md-6">

@@ -30,8 +30,19 @@ export class ApiService {
       .then(res => res.json()).catch(resion => resion);
   }
   public addUser(user: any): Promise<any> {
-    return this.http.post(`${this.urlAddUsers}`, user)
-      .toPromise()
-      .then(res => res.json()).catch(resion => resion);
+    let data: any = {};
+    data['firstName'] = user.firstName1;
+    data['lastName'] = user.lastName1;
+    data['email'] = user.email1;
+    data['password'] = user.password1;
+    data['role'] = user.role1;
+    console.log('ApiService: ', data);
+    return fetch(`${this.urlAddUsers}`, {
+      method: 'POST',
+      body: JSON.stringify(data)
+    }).then(res => res.json()).catch(resion => resion);
+    // return this.http.post(`${this.urlAddUsers}`, user)
+    //   .toPromise()
+    //   .then(res => res.json()).catch(resion => resion);
   }
 }
