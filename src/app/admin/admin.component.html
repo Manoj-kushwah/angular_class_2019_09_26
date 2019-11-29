@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-6">
     <div class="form-group ml-3 mt-3">
-      <a data-target="#addUserModal" data-toggle="modal">Add user</a>
+      <a #addUserBtn data-target="#addUserModal" data-toggle="modal">Add user</a>
       <div class="input-group">
-        <input type="text" [(ngModel)]="query" class="form-control" aria-label="Text input with dropdown button">
+        <input type="text" [(ngModel)]="query" (input)="queryStr(query)" class="form-control" aria-label="Text input with dropdown button">
         <!-- <div class="input-group-append">
           <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Dropdown</button>
@@ -29,7 +29,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of userList; let i=index;">
+    <tr *ngFor="let user of userListUi; let i=index;">
       <th scope="row">{{i}}</th>
       <td>{{user.firstName}}</td>
       <td>{{user.lastName}}</td>

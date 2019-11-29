@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 import { Router } from '@angular/router';
 import { ApiService } from '../api/api.service';
+import { UserListFilterPipe } from '../shared/user-list-filter.pipe';
 
 @Component({
   selector: 'app-admin',
@@ -9,10 +10,14 @@ import { ApiService } from '../api/api.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  public userList:any[] = [];
+  public userList: any[] = [];
+  public userListUi: any[] = [];
   public query: string;
   public newUser: any = { password1: null, email1: null};
   public rePassword: string;
+
+  @ViewChild('addUserBtn') private addUserBtn1: ElementRef;
+
   constructor(private auth: AuthService, private route: Router, private api: ApiService) { }
 
   ngOnInit() {
@@ -23,6 +28,7 @@ export class AdminComponent implements OnInit {
         console.log('res: ', res);
         if (res.data != null) {
           this.userList = res.data;
+          this.queryStr();
         }
       }, err => {
         console.log('err: ', err);
@@ -30,6 +36,12 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  /**
+   * queryStr
+   */
+  public queryStr(str?: string): void {
+    this.userListUi = new UserListFilterPipe().transform(this.userList, str);
+  }
   /**
    * addUser
    */
@@ -52,10 +64,26 @@ export class AdminComponent implements OnInit {
       this.api.addUser(this.newUser).then((res) => {
         console.log('Created:', res);
         this.userList.unshift(res.data);
+        this.queryStr();
+        this.hideBsModal();
       }).catch((err) => {
         console.log('Error: ', err);
       })
     }
     return false;
+  }
+
+  /**
+   * hideBsModal
+   */
+  public hideBsModal() {
+    let el: HTMLAnchorElement = this.addUserBtn1.nativeElement;
+    if(el)el.click();
+
+    // try{
+    //   eval(`$('#addUserModal').modal('hide')`);
+    // } catch(e){
+    //   console.log(e);
+    // }
   }
 }
